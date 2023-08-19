@@ -1,0 +1,10 @@
+.vertical-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Gap between buttons */
+    width: 200px; /* Fixed width for the button container */
+  }
+  /* Custom CSS for buttons */
+  .vertical-buttons .btn {
+    width: 100%; /* Buttons take up full width of container */
+  }
