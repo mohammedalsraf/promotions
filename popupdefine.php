@@ -13,10 +13,10 @@
         <!-- Your form content for Home here -->
     
         <div class="vertical-buttons d-flex justify-content-center align-items-center">
-          <!-- <button class="btn btn-primary" onclick="window.location.href='definealwat.php';">تعريف الدرجات والعلاوات</button> -->
+          <button class="btn btn-primary" onclick="window.location.href='definesalary.php';">تعريف الراتب  </button>
           <button class="btn btn-primary" onclick="window.location.href='definejd.php';">تعريف العناوين الوظيفية</button>
           <button class="btn btn-primary" onclick="window.location.href='definect.php';">تعريف التحصيل الدراسي</button>
-          <!-- <button class="btn btn-primary" onclick="window.location.href='definect.php';">تعريف مكان العمل</button> -->
+          <button class="btn btn-primary" onclick="window.location.href='addusers.php';">تعريف المستخدمين</button>
          
         </div>
       </div>

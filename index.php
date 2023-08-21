@@ -13,8 +13,8 @@
 <body>
 <div class="container d-flex justify-content-center align-items-center ">
     <div class="text-center">
-    <div class="container center "><img src="assets/2.jpg" alt="Logo" height="300"></div>
-<div><h1 class="text-success">نظام ارشفة المستندات والكتب الالكترونية</h1></div>
+    <div class="container center "><img src="assets/3.png" alt="Logo" height="300"></div>
+<div><h1 class="text-success">نظام العلاوات والترفيعات   </h1></div>
     </div>
   </div>
 

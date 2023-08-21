@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+// Check if the user is logged in
+if (!isset($_SESSION['id'])) {
+    header("Location: index.php"); // Redirect to the login page
+    exit();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en" dir="rtl">
 <head>
@@ -38,7 +48,7 @@ do {
 <div class="container mt-4 ">
                 <div class="border p-3 bg-success text-light">
                     <h2 class="text-center">
-                      ادخل ملعومات الموظف ثم قم بحساب العلاوات والترفيعات وحفظها
+                      ادخل معلومات الموظف ثم قم بحساب العلاوات والترفيعات وحفظها
                     </h2>
 
                 </div>

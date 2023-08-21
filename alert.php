@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+// Check if the user is logged in
+if (!isset($_SESSION['id'])) {
+    header("Location: index.php"); // Redirect to the login page
+    exit();
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en" dir="rtl">
 
@@ -14,20 +24,41 @@
     <?php include("popupdefine.php") ?>
     <?php $searchKeyword = "";
     include("conn.php");
+    if(isset($_POST['alert'])){
+       
+        $alertDay=$_POST['alertDay'];
+        $alertDayQuery="INSERT INTO `alert`(`alertDay`) VALUES ('$alertDay')";
+        $result=mysqli_query($conn,$alertDayQuery);
+    }
+        
+
     // Step 2: Get search keyword from user input (assuming it's in $_POST["search"])
-   
-      $alertDay=31;
-        $query = "SELECT *
-      
-            FROM emp
-            WHERE newAlawa <= DATE_ADD(NOW(), INTERVAL $alertDay DAY);";
-        $result = mysqli_query($conn, $query);
-
-
-        if (!$result) {
-            die("Query failed: " . mysqli_error($conn));
+    $gelAlertDay="SELECT alertDay FROM `alert`";
+    $result = $conn->query($gelAlertDay);
+    $alertAll = [];
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $alertAll[] = $row;
         }
-
+        $f=(end( $alertAll));
+        $alertDay=$f['alertDay'];
+        
+            $query = "SELECT *
+          
+                FROM emp
+                WHERE newAlawa <= DATE_ADD(NOW(), INTERVAL $alertDay DAY) OR newTarfee<= DATE_ADD(NOW(), INTERVAL $alertDay DAY) ";
+            $result = mysqli_query($conn, $query);
+    
+    
+            if (!$result) {
+                die("Query failed: " . mysqli_error($conn));
+            }
+    
+    
+    }else{
+       
+    }
+    
 
     
 
@@ -48,36 +79,23 @@
             </div>
 
 
-            <form class="form-inline" method="get">
+            <form class="form-inline" method="post">
                 <div class="form-group my-3 ">
                     <div class="row">
-                        <?php $currentDate = date('Y-m-d'); ?>
+                      
 
                         <div class="col-3">
-                            <div class="container my-1"><label for="">من</label></div>
-                            <input type="date" class="form-control mr-2" id="searchInput" name="from"
-                                value="<?php if (empty($startDate)) {
-                                    echo $currentDate;
-                                } else {
-                                    echo $startDate;
-                                } ?>">
+                            <div class="container my-1"><label for="">عدد ايام التنبيه</label></div>
+                            <input type="number" class="form-control mr-2 bg-danger text-bold fs-4 fw-bold text-light" id="searchInput" name="alertDay" value="<?php echo  $alertDay  ?>">
                         </div>
 
-                        <div class="col-3">
-                            <div class="container my-1"> <label for="">الى</label></div>
-                            <input type="date" class="form-control mr-2" id="searchInput" name="to"
-                                value="<?php if (empty($startDate)) {
-                                    echo $currentDate;
-                                } else {
-                                    echo $endDate;
-                                } ?>">
-                        </div>
+                      
 
                     </div>
 
 
                 </div>
-                <button type="submit" class="btn btn-primary mr-2" name='report'>فلترة التقرير</button>
+                <button type="submit" class="btn btn-primary mr-2" name='alert'>حفظ</button>
                 <!-- <button type="button" class="btn btn-danger" id="cancelButton">الغاء</button> -->
 
             </form>

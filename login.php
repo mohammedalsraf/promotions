@@ -13,7 +13,7 @@ if (isset($_POST['login'])) {
         
         // $hashedPassword = $row['password'];
         $row = $result->fetch_assoc();
-        $_SESSION['user_id'] = $row['id'];
+        $_SESSION['id'] = $row['id'];
         $_SESSION['username'] = $row['username'];
         
 

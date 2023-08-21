@@ -12,20 +12,20 @@
         <a class="nav-link btn btn-success bg-success" href="#" data-toggle="modal" data-target="#homeModal"><i class="fas fa-info-circle"></i>الملفات التعريفية</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link btn btn-warning bg-warning" href="addemp.php" ><i class="fas fa-cogs"></i>فتح ملف موظف</a>
+        <a class="nav-link btn btn-warning bg-warning" href="addemp.php" ><i class="fas fa-user-plus"></i>فتح ملف موظف</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link btn btn-warning bg-primary" href="searchupdate.php" ><i class="fas fa-cogs"></i>بحث وتحديث</a>
+        <a class="nav-link btn btn-warning bg-primary" href="searchupdate.php" ><i class="fas fa-search"></i>بحث وتحديث</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link btn btn-warning bg-success" href="report.php" ><i class="fas fa-cogs"></i>تقرير العلاوات والترفيعات</a>
+        <a class="nav-link btn btn-warning bg-success" href="report.php" ><i class="far fa-chart-bar"></i>تقرير العلاوات والترفيعات</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link btn btn-warning bg-warning" href="alert.php" ><i class="fas fa-cogs"></i>التنبيهات</a>
+        <a class="nav-link btn btn-warning bg-warning" href="alert.php" ><i class="fas fa-bell"></i>ألتنبيهات</a>
        
       </li>
       <li class="nav-item">
-        <a class="nav-link btn btn-danger bg-danger" href="#" data-toggle="modal" data-target="#contactModal"><i class="fa fa-times"></i>خروج</a>
+        <a class="nav-link btn btn-danger bg-danger" href="logout.php"  ><i class="fa fa-times"></i>خروج</a>
       </li>
     </ul>
   </div>

@@ -8,16 +8,16 @@ if (!isset($_SESSION['id'])) {
 }
 
 ?>
-
 <?php
 include("conn.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
    
-    $jd = $_POST["jd"];
- 
+    $degree = $_POST["degree"];
+    $stage = $_POST["stage"];
+    $salary = $_POST["salary"];
     
-    $sql = "INSERT INTO jd (jd) VALUES ('$jd')";
+    $sql = "INSERT INTO salary (degree,stage,salary) VALUES ('$degree','$stage','$salary')";
     
     if ($conn->query($sql) === TRUE) {
         echo "تمت إضافة البيانات بنجاح.";
@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    
     if(isset($_GET["id"])){
         $id=$_GET['id'];
-        $sql = "DELETE FROM `jd` WHERE id=$id";
+        $sql = "DELETE FROM `salary` WHERE id=$id";
         if ($conn->query($sql) === TRUE) {
             echo "تمت إضافة البيانات بنجاح.";
         } else {
@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 // Fetch data from the database
-$sql = "SELECT * FROM jd";
+$sql = "SELECT * FROM salary";
 $result = $conn->query($sql);
 
 // Close the connection
@@ -51,7 +51,7 @@ $conn->close();
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <title>تعريف العناوين الوظيفية</title>
+    <title>تعريف الدرجات والعلاوات السنوية</title>
     <!-- Include Bootstrap CSS -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
@@ -67,10 +67,17 @@ $conn->close();
    <h2>إضافة البيانات</h2>
     <form method="post">
         <div class="mb-3">
-            <label for="name" class="form-label">العنوان الوظيفي:</label>
-            <input type="text" class="form-control" id="jd" name="jd" required>
+            <label for="name" class="form-label">الدرجة:</label>
+            <input type="number" class="form-control" id="degree" name="degree" required>
         </div>
-       
+        <div class="mb-3">
+            <label for="email" class="form-label"> المرحلة :</label>
+            <input type="number" class="form-control" id="number" name="stage" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label"> الراتب :</label>
+            <input type="number" class="form-control" id="number" name="salary" required>
+        </div>
         <button type="submit" class="btn btn-primary">حفظ</button>
     </form>
    </div>
@@ -80,15 +87,16 @@ $conn->close();
         <thead>
             <tr>
                 <!-- <th scope="col">الرقم</th> -->
-                <th scope="col">العنوان الوظيفي</th>
-           
+                <th scope="col">الدرجة</th>
+                <th scope="col"> المرحلة</th>
+                <th scope="col"> الراتب</th>
             </tr>
         </thead>
         <tbody>
             <?php
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
-                    echo "<tr><td>" . $row["jd"] . "</td>"  . "<td>"."<a class='btn btn-danger btn-sm' name='delete' href='definejd.php?id=$row[id]'>حذف</a>"."</td></tr>";
+                    echo "<tr><td>" . $row["degree"] . "</td><td>" . $row["stage"] ."</td><td>" . $row["salary"] . "</td><td>"."<a class='btn btn-danger btn-sm' name='delete' href='definesalary.php?id=$row[id]'>حذف</a>"."</td></tr>";
                 }
             } else {
                 echo "<tr><td colspan='3'>لا توجد بيانات متاحة</td></tr>";
