@@ -15,8 +15,8 @@ if (!isset($_SESSION['id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
 </head>
 
 <body>
@@ -59,18 +59,26 @@ if (!isset($_SESSION['id'])) {
             <form class="form-inline" method="get">
                 <div class="form-group my-3 ">
                     <div class="row">
-                    <?php $currentDate = date('Y-m-d'); ?>
+                        <?php $currentDate = date('Y-m-d'); ?>
 
                         <div class="col-3">
                             <div class="container my-1"><label for="">من</label></div>
                             <input type="date" class="form-control mr-2" id="searchInput" name="from"
-                                value="<?php if(empty($startDate)){echo $currentDate;}else{echo $startDate;} ?>">
+                                value="<?php if (empty($startDate)) {
+                                    echo $currentDate;
+                                } else {
+                                    echo $startDate;
+                                } ?>">
                         </div>
 
                         <div class="col-3">
-                        <div class="container my-1"> <label for="">الى</label></div>
+                            <div class="container my-1"> <label for="">الى</label></div>
                             <input type="date" class="form-control mr-2" id="searchInput" name="to"
-                                value="<?php if(empty($startDate)){echo $currentDate;}else{echo $endDate;} ?>">
+                                value="<?php if (empty($startDate)) {
+                                    echo $currentDate;
+                                } else {
+                                    echo $endDate;
+                                } ?>">
                         </div>
 
                     </div>
@@ -161,8 +169,8 @@ if (!isset($_SESSION['id'])) {
         }
 
     </script>
-    <script src="https://code.jquery.com/jquery-3.7.0.js"
-        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script> -->
 
     <script>
         $(document).ready(function () {
@@ -173,10 +181,10 @@ if (!isset($_SESSION['id'])) {
             });
         });
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="code.jquery.com_jquery-3.7.0.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> -->
+    <script src="bootstrap-4.5.3/js/bootstrap.min.js"></script>
 
 </body>
 

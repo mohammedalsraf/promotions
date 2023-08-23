@@ -15,8 +15,8 @@ if (!isset($_SESSION['id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="fontawesome/css/all.min.css">
 </head>
 
 <body>
@@ -24,43 +24,43 @@ if (!isset($_SESSION['id'])) {
     <?php include("popupdefine.php") ?>
     <?php $searchKeyword = "";
     include("conn.php");
-    if(isset($_POST['alert'])){
-       
-        $alertDay=$_POST['alertDay'];
-        $alertDayQuery="INSERT INTO `alert`(`alertDay`) VALUES ('$alertDay')";
-        $result=mysqli_query($conn,$alertDayQuery);
+    if (isset($_POST['alert'])) {
+
+        $alertDay = $_POST['alertDay'];
+        $alertDayQuery = "INSERT INTO `alert`(`alertDay`) VALUES ('$alertDay')";
+        $result = mysqli_query($conn, $alertDayQuery);
     }
-        
+
 
     // Step 2: Get search keyword from user input (assuming it's in $_POST["search"])
-    $gelAlertDay="SELECT alertDay FROM `alert`";
+    $gelAlertDay = "SELECT alertDay FROM `alert`";
     $result = $conn->query($gelAlertDay);
     $alertAll = [];
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
             $alertAll[] = $row;
         }
-        $f=(end( $alertAll));
-        $alertDay=$f['alertDay'];
-        
-            $query = "SELECT *
+        $f = (end($alertAll));
+        $alertDay = $f['alertDay'];
+
+        $query = "SELECT *
           
                 FROM emp
                 WHERE newAlawa <= DATE_ADD(NOW(), INTERVAL $alertDay DAY) OR newTarfee<= DATE_ADD(NOW(), INTERVAL $alertDay DAY) ";
-            $result = mysqli_query($conn, $query);
-    
-    
-            if (!$result) {
-                die("Query failed: " . mysqli_error($conn));
-            }
-    
-    
-    }else{
-       
-    }
-    
+        $result = mysqli_query($conn, $query);
 
-    
+
+        if (!$result) {
+            die("Query failed: " . mysqli_error($conn));
+        }
+
+
+    } else {
+
+    }
+
+
+
 
 
 
@@ -72,7 +72,7 @@ if (!isset($_SESSION['id'])) {
         <div class="container mt-5  col-12 ">
             <div class="container mt-4 ">
                 <div class="border p-3 bg-success text-light">
-                    <h2 class="text-center">تنبيهات مستحقي العلاوة والترفيع ادخل فترة التنبية بالايام 
+                    <h2 class="text-center">تنبيهات مستحقي العلاوة والترفيع ادخل فترة التنبية بالايام
                     </h2>
 
                 </div>
@@ -82,14 +82,15 @@ if (!isset($_SESSION['id'])) {
             <form class="form-inline" method="post">
                 <div class="form-group my-3 ">
                     <div class="row">
-                      
+
 
                         <div class="col-3">
                             <div class="container my-1"><label for="">عدد ايام التنبيه</label></div>
-                            <input type="number" class="form-control mr-2 bg-danger text-bold fs-4 fw-bold text-light" id="searchInput" name="alertDay" value="<?php echo  $alertDay  ?>">
+                            <input type="number" class="form-control mr-2 bg-danger text-bold fs-4 fw-bold text-light"
+                                id="searchInput" name="alertDay" value="<?php echo $alertDay ?>">
                         </div>
 
-                      
+
 
                     </div>
 
@@ -191,10 +192,10 @@ if (!isset($_SESSION['id'])) {
             });
         });
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="code.jquery.com_jquery-3.7.0.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> -->
+    <script src="bootstrap-4.5.3/js/bootstrap.min.js"></script>
 
 </body>
 
